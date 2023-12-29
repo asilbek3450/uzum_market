@@ -10,6 +10,7 @@ class Users(AbstractUser):
     email = models.EmailField(max_length=50, verbose_name='Email')
     password1 = models.CharField(max_length=50, verbose_name='Parol')
     password2 = models.CharField(max_length=50, verbose_name='Parolni takrorlang')
+    image = models.ImageField(upload_to='users_images/', null=True, blank=True, verbose_name='Profil rasmi')
 
     class Meta:
         verbose_name = 'Foydalanuvchi'
@@ -17,4 +18,3 @@ class Users(AbstractUser):
 
     is_anonymous = False
     is_authenticated = True
-

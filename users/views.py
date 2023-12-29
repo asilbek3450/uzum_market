@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import UserLoginForm, SignupForm
+from .forms import UserLoginForm, SignupForm, UserUpdateForm
 from .models import Users
 
 
@@ -64,5 +65,20 @@ def user_logout(request):
     return redirect('login')
 
 
+@login_required(login_url='login')
 def profile_page(request):
-    return render(request, 'users/profile.html', context={'user_profile': request.user})
+    user_profile = Users.objects.get(id=request.user.id)
+    form = UserUpdateForm(request.POST, request.FILES, instance=user_profile)
+    if request.method == 'POST':
+        if form.is_valid():
+            Users.objects.filter(id=request.user.id).update(image=form.cleaned_data.get('image'))
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserUpdateForm(instance=user_profile)
+    context = {
+        'form': form,
+        'user_profile': user_profile
+    }
+
+    return render(request, 'users/profile.html', context)

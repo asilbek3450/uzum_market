@@ -24,53 +24,39 @@
                                 <form method="POST">
                                     {% csrf_token %}
                                     {{ form.as_p }}
-                                    
+
 {#                                    <div class="form-row">#}
 {#                                        <div class="col-md-6">#}
 {#                                            <div class="form-group">#}
 {#                                                <label class="small mb-1" for="inputFirstName">Имя</label>#}
-{#                                                <input class="form-control py-4" id="inputFirstName" type="text"#}
-{#                                                       placeholder="Введите имя"/>#}
+{#                                                {{ form.first_name }}#}
 {#                                            </div>#}
 {#                                        </div>#}
 {#                                        <div class="col-md-6">#}
 {#                                            <div class="form-group">#}
 {#                                                <label class="small mb-1" for="inputLastName">Фамилия</label>#}
-{#                                                <input class="form-control py-4" id="inputLastName" type="text"#}
-{#                                                       placeholder="Введите фамилию"/>#}
+{#                                                {{ form.last_name }}#}
 {#                                            </div>#}
 {#                                        </div>#}
 {#                                    </div>#}
 {#                                    <div class="form-row">#}
 {#                                        <div class="col-md-6">#}
 {#                                            <label class="small mb-1" for="inputUsername">Имя пользователя</label>#}
-{#                                            <input class="form-control py-4" id="inputUsername" type="text"#}
-{#                                                   aria-describedby="usernameHelp"#}
-{#                                                   placeholder="Введите имя пользователя"/>#}
+{#                                            {{ form.username }}#}
 {#                                        </div>#}
 {#                                        <div class="col-md-6">#}
-{#                                            <label class="small mb-1" for="inputEmailAddress">Адрес электронной#}
-{#                                                почты</label>#}
-{#                                            <input class="form-control py-4" id="inputEmailAddress" type="email"#}
-{#                                                   aria-describedby="emailHelp"#}
-{#                                                   placeholder="Введите адрес эл. почты"/>#}
+{#                                            <label class="small mb-1" for="inputEmailAddress">Адрес электронной почты</label>#}
+{#                                            {{ form.email }}#}
 {#                                        </div>#}
 {#                                    </div>#}
 {#                                    <div class="form-row">#}
 {#                                        <div class="col-md-6">#}
-{#                                            <div class="form-group">#}
-{#                                                <label class="small mb-1" for="inputPassword">Пароль</label>#}
-{#                                                <input class="form-control py-4" id="inputPassword" type="password"#}
-{#                                                       placeholder="Введите пароль"/>#}
-{#                                            </div>#}
+{#                                            <label class="small mb-1" for="inputPassword">Пароль</label>#}
+{#                                            {{ form.password1 }}#}
 {#                                        </div>#}
 {#                                        <div class="col-md-6">#}
-{#                                            <div class="form-group">#}
-{#                                                <label class="small mb-1" for="inputConfirmPassword">Подтверждение#}
-{#                                                    пароля</label>#}
-{#                                                <input class="form-control py-4" id="inputConfirmPassword"#}
-{#                                                       type="password" placeholder="Подтвердите пароль"/>#}
-{#                                            </div>#}
+{#                                            <label class="small mb-1" for="inputConfirmPassword">Подтверждение пароля</label>#}
+{#                                            {{ form.password2 }}#}
 {#                                        </div>#}
 {#                                    </div>#}
 

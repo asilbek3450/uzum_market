@@ -10,32 +10,48 @@
         <div class="col-lg-7"><br><br><br><br>
             <h4 class="mt-3 mb-3">Профиль</h4>
             <div class="col-lg-12 text-center">
-                <img width="200" height="200" src="https://www.iprcenter.gov/image-repository/blank-profile-picture.png/@@images/image.png"
+                {% if user_profile.image %}
+
+                <img width="200" height="200" src="{{ user_profile.image.url }}"
                      class="img-thumbnail" alt="profile photo">
+
+                {% else %}
+                    <img width="200" height="200" src="https://www.iprcenter.gov/image-repository/blank-profile-picture.png/@@images/image.png" class="img-thumbnail" alt="profile photo">
+
+                {% endif %}
+
             </div>
-            <form action="">
+            <form method="POST">
+                {% csrf_token %}
+
                 <div class="form-row">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="small mb-1" for="inputFirstName">Имя</label>
-                            <input class="form-control py-4" id="inputFirstName" type="text" value="{{ user_profile.first_name }}"/>
+                            {{ form.first_name }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="small mb-1" for="inputLastName">Фамилия</label>
-                            <input class="form-control py-4" id="inputLastName" type="text" value="{{ user_profile.last_name }}"/>
+                            {{ form.last_name }}
                         </div>
                     </div>
                 </div>
                 <div class="form-row mb-2">
                     <div class="col-lg-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="userAvatar" size="50">
-                            <label class="custom-file-label" for="userAvatar">Выберите изображение</label>
+                        <div class="form-group">
+                            <label class="small mb-1" for="inputLastName">Аватар</label>
+                            {% if user_profile.image %}
+                                <a href="{{ user_profile.image.url }}">{{ user_profile.image.name }}</a>
+                            {% else %}
+                                <i>Rasm yo'q</i>
+                            {% endif %}
+                            {{ form.image }}
                         </div>
                     </div>
                 </div>
+
                 <div class="form-row">
                     <div class="col-lg-6">
                         <label class="small mb-1" for="inputUsername">Имя пользователя</label>
@@ -98,6 +114,6 @@
     </div>
 </div>
 
-    
+
 {% endblock content %}
 </body>
